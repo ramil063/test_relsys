@@ -11,29 +11,33 @@ CategoryAsset::register($this)
 <div class="site-index">
     <div class="body-content">
         <div class="row">
-            <div class="main-container col-lg-6">
+            <div class="main-container">
                 <ul>
-                    <li>
+                    <li class="list-unstyled">
                         <form class="category-form">
-                            <label for="name">
-                                Добавить дочерний
-                                <input type="text" name="name">
-                            </label>
-                            <button class="btn btn-success add-category">+</button>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name" placeholder="Введите имя дочерней категории" required>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success">+</button>
+                            </div>
                         </form>
                         <ul class="ul-0">
                             <? foreach ($categories as $category): ?>
-                                <li>
+                                <li class="list-unstyled">
                                     <h2><?= $category['name']; ?></h2>
                                     <form class="category-form">
                                         <input type="hidden" name="parent_id" value="<?= $category['id'] ?>">
-                                        <label for="name">
-                                            Добавить дочерний
-                                            <input type="text" name="name">
-                                        </label>
-                                        <button class="btn btn-success">+</button>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="name" placeholder="Введите имя дочерней категории" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success">+</button>
+                                        </div>
                                     </form>
-                                    <button class="btn btn-default show-subcategory" data-id="<?= $category['id'] ?>">v</button>
+                                    <button class="btn btn-default show-subcategory" data-id="<?= $category['id'] ?>">
+                                        Показать дочерние
+                                    </button>
                                     <ul class="ul-<?= $category['id'] ?>"></ul>
                                 </li>
                             <? endforeach; ?>
